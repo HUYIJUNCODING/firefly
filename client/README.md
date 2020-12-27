@@ -1,5 +1,6 @@
-# hello-vue3
+# firefly-client
 
+this is the client of firefly front-end monitoring platform
 ## Project setup
 ```
 yarn install
@@ -19,6 +20,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
