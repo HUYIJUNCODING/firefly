@@ -246,7 +246,10 @@ nmp run dev
 
 * b. 或进行注册、登录，就能看到模板项目数据了。
 
-
+可参考资料:
+[Error installing node-gyp on ubuntu](https://stackoverflow.com/questions/21155922/error-installing-node-gyp-on-ubuntu)<br>
+[npm install 报错:node-pre-gyp ERR! 问题解决](https://www.cnblogs.com/haochuang/p/5688093.html)<br>
+[Ubuntu18.04下python版本完美切换的解决方法](https://www.geek-share.com/detail/2771497709.html)<br>
 
 
 
