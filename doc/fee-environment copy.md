@@ -13,7 +13,7 @@
  * 建议严格按照教程步骤进行安装配置,防止出现奇怪问题.
  * 步骤6 打开  Microsoft Store 商店时,如果出现类似于下方等打不开的情况,检查是否启用了代理,关闭所有代理,然后重新打开商店.
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/56190225cee84da1b215b427429038a7~tplv-k3u1fbpfcp-zoom-1.image)
+![](http://static.ledouya.com/Ft-SFeRe0EbP4J3uZPTioNx_iDy-)
 
 * 分发版本较多,选择自己感兴趣的即可,也可以同时安装多个分发,但是感觉没太大必要,若选择 ubuntu 建议安装 Ubuntu 18.04 LTS 版本,本教程就是基于此版本,出了问题,网上此版本下的解决方案很多.
 * 最后一步的 "为新的 Linux 分发版创建用户帐户和密码"的密码很重要,之后 bash 窗口使用管理员权限运行命令时都要校验密码,因此不要忘记喽.
