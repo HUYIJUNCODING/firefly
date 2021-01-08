@@ -12,12 +12,15 @@
 注意事项: 
  * 建议严格按照教程步骤进行安装配置,防止出现奇怪问题.
  <br>
+
  * 步骤6 打开  Microsoft Store 商店时,如果出现类似于下方等打不开的情况,检查是否启用了代理,关闭所有代理,然后重新打开商店.
 
 ![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/1.png)
 <!-- ![](http://static.ledouya.com/Ft-SFeRe0EbP4J3uZPTioNx_iDy-) -->
 
 * 分发版本较多,选择自己感兴趣的即可,也可以同时安装多个分发,但是感觉没太大必要,若选择 ubuntu 建议安装 Ubuntu 18.04 LTS 版本,本教程就是基于此版本,出了问题,网上此版本下的解决方案很多.
+<br>
+
 * 最后一步的 "为新的 Linux 分发版创建用户帐户和密码"的密码很重要,之后 bash 窗口使用管理员权限运行命令时都要校验密码,因此不要忘记喽.
 
 
@@ -44,7 +47,9 @@ sudo apt-get update
 ### 2.3 安装 nvm
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+
 或者
+
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 ```
 
@@ -72,10 +77,15 @@ export NVM_DIR="$HOME/.nvm"
 
 ```
 nvm list-remote (查看nvm 远程可安装的 node 版本)
+
 nvm install node (安装最新可用的版本)
+
 nvm install --lts (安装最新的长期稳定版)
+
 nvm install 14.15.0 (安装指定版本,这里以安装 14.15.0 这个版本为示例)
+
 nvm ls (查看当前已安装的 node 版本)
+
 nvm use 14.15.0 (切换到指定node版本,这里以 14.15.0 这个版本为示例)
 ```
 ## 3. 下载安装 mysql
@@ -86,12 +96,16 @@ ubuntu 18.04 安装 mysql 参考这篇文章就够了,很详细,按照步骤一�
 **注意事项**
 * 运行安全脚本：`$ sudo mysql_secure_installation` 时候如果报错,则关闭当前 bash 窗口重新打开,然后输入命令,成功后继续按照教程提示下一步即可.
 <br>
+
 * 若遇到报 `ER_NOT_SUPPORTED_AUTH_MODE`,则请参考这篇文章来解决.<br>[解决Node.js mysql客户端不支持认证协议引发的“ER_NOT_SUPPORTED_AUTH_MODE”问题](https://waylau.com/node.js-mysql-client-does-not-support-authentication-protocol/)
 <br>
+
 * 设置root用户的密码的时候不要忘记喽,之后登录数据库需要验证,此密码可以被重置,但是尽量还是不要忘记.
 <br>
+
 * 若执行 `mysql -u root -p` 报  `Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)` 则先执行 `sudo service mysql start` 启动服务,然后执行  `mysql -u root -p`命令连接服务.
 <br>
+
 * 若执行 `mysql -u root -p` 报 `ERROR 1698 (28000): Access denied for user 'root'@'localhost'` 则命令前加 sudo 运行,即`sudo mysql -u root -p` .
 
 ## 4. 下载安装 redis
