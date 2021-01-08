@@ -1,6 +1,6 @@
 # fee 灯塔项目运行环境安装及配置
 
->官方教程是使用 docker (比较耗费内存和性能) 集成环境,本教程使用适用于 linux 的 Windows(Windows10) 子系统 WSL 2(分发安装 ubuntu)
+>官方教程是使用 docker (比较耗费内存和性能) 集成环境,本教程使用适用于 linux 的 Windows(Windows10) 子系统 WSL 2 分发安装 ubuntu
 
 ## 1.下载安装 WSL 2
 [安装WSL 2 官方教程](https://docs.microsoft.com/zh-cn/windows/wsl/about)
@@ -11,6 +11,7 @@
 
 注意事项: 
  * 建议严格按照教程步骤进行安装配置,防止出现奇怪问题.
+ <br>
  * 步骤6 打开  Microsoft Store 商店时,如果出现类似于下方等打不开的情况,检查是否启用了代理,关闭所有代理,然后重新打开商店.
 
 ![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/1.png)
@@ -84,9 +85,13 @@ ubuntu 18.04 安装 mysql 参考这篇文章就够了,很详细,按照步骤一�
 
 **注意事项**
 * 运行安全脚本：`$ sudo mysql_secure_installation` 时候如果报错,则关闭当前 bash 窗口重新打开,然后输入命令,成功后继续按照教程提示下一步即可.
-* ,若遇到报 `ER_NOT_SUPPORTED_AUTH_MODE`,则请参考这篇文章来解决.<br>[解决Node.js mysql客户端不支持认证协议引发的“ER_NOT_SUPPORTED_AUTH_MODE”问题](https://waylau.com/node.js-mysql-client-does-not-support-authentication-protocol/)
+<br>
+* 若遇到报 `ER_NOT_SUPPORTED_AUTH_MODE`,则请参考这篇文章来解决.<br>[解决Node.js mysql客户端不支持认证协议引发的“ER_NOT_SUPPORTED_AUTH_MODE”问题](https://waylau.com/node.js-mysql-client-does-not-support-authentication-protocol/)
+<br>
 * 设置root用户的密码的时候不要忘记喽,之后登录数据库需要验证,此密码可以被重置,但是尽量还是不要忘记.
+<br>
 * 若执行 `mysql -u root -p` 报  `Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)` 则先执行 `sudo service mysql start` 启动服务,然后执行  `mysql -u root -p`命令连接服务.
+<br>
 * 若执行 `mysql -u root -p` 报 `ERROR 1698 (28000): Access denied for user 'root'@'localhost'` 则命令前加 sudo 运行,即`sudo mysql -u root -p` .
 
 ## 4. 下载安装 redis
@@ -96,6 +101,7 @@ ubuntu 18.04 安装 Redis 参考这篇文章就够了,很详细,按照步骤一�
 
 **注意事项**<br>
 * 参考教程中启动/关闭/重启 redis 命令用的是 `sudo systemctl start redis`, `sudo systemctl stop redis`, `sudo systemctl restart redis`, 如果不生效, 则改用 `sudo service redis-server start`, `sudo service redis-server stop`, `sudo service redis-server restart` 命令.
+<br>
 * 运行命令 `service --status-all` 来查看服务名称(启动/关闭/重启服务时候不确定服务名称的话可以查看).
 
 ![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/2.png)
