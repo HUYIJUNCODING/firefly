@@ -140,12 +140,15 @@ git clone git@github.com:LianjiaTech/fee.git
 [仓库地址](https://github.com/LianjiaTech/fee)
 
 ### 6.2 vscode 导入项目(使用 Remote WSL 插件 )
-* 点击 vscode 右下角图标(如图所示)
+* 点击 vscode 右下角图标(如图所示)<br>
+
 ![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/3.png)
 <!--![](http://static.ledouya.com/FsTSqqDi8ncH5H-6ZIYiFvFfVvT8)  -->
 
 * 弹出下拉框中选择 "Open Folder in WSL..." 去选择想导入的项目
 * 导入成功后标识如图
+<br>
+
 ![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/4.png)
 <!--![](http://static.ledouya.com/FkI4wYBsyunr0ESZ0XcZCUFsPnO8)  -->
 
@@ -178,28 +181,28 @@ npm install
 
 #### 6.5.1 针对 node-rdkafka,sqlite3 依赖包报错解决方案
 
-* 1. 在 ubuntu 上安装 GCC
+* 在 ubuntu 上安装 GCC
 [如何在ubuntu 18.04上安装GCC编译器](https://www.myfreax.com/how-to-install-gcc-compiler-on-ubuntu-18-04/)<br>
 参考文档一步步安装 GCC编译器 即可.第一步安装 gcc 的原因是 node-rdkafka 的需要用到 node-gyp,而 node-gyp 的安装又依赖 gcc.
 
-* 2. 在 ubuntu 上 安装 python2.7 版本
+* 在 ubuntu 上 安装 python2.7 版本
  安装  python2.7 的原因是 sqlite3 需要用到 node-pre-gyp ,而 node-pre-gyp 的安装又依赖 python2.7.
 
 ```
-sudo add-apt-repository ppa:fkrull/deadsnakes
+ 1. sudo add-apt-repository ppa:fkrull/deadsnakes
 
-sudo apt-get update
+ 2. sudo apt-get update
 
-sudo apt-get install python2.7
+ 3. sudo apt-get install python2.7
 
 //切换 python 版本,ubuntu18.04 默认 安装 的是 python3.6, 因此安装 python2.7 后需要切换到当前版本才可以使用,有点类似 nvm 切换 node 版本.
 //sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10  中最后一个参数指定了此选项的优先级,数值越大,优先级越高,会被指定为当前默认python版本,这里10就表示优先级等级
 
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10 
+4. sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10 
 
 或者
 
-sudo update-alternatives --config python
+4. sudo update-alternatives --config python
 
 
 其他命令:
@@ -266,7 +269,7 @@ nmp run dev
 
 * b. 或进行注册、登录，就能看到模板项目数据了。
 
-可参考资料:
+可参考资料:<br>
 [Error installing node-gyp on ubuntu](https://stackoverflow.com/questions/21155922/error-installing-node-gyp-on-ubuntu)<br>
 [npm install 报错:node-pre-gyp ERR! 问题解决](https://www.cnblogs.com/haochuang/p/5688093.html)<br>
 [Ubuntu18.04下python版本完美切换的解决方法](https://www.geek-share.com/detail/2771497709.html)<br>
