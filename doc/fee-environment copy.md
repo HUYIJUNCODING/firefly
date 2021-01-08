@@ -13,7 +13,8 @@
  * 建议严格按照教程步骤进行安装配置,防止出现奇怪问题.
  * 步骤6 打开  Microsoft Store 商店时,如果出现类似于下方等打不开的情况,检查是否启用了代理,关闭所有代理,然后重新打开商店.
 
-![](http://static.ledouya.com/Ft-SFeRe0EbP4J3uZPTioNx_iDy-)
+![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/1.png)
+<!-- ![](http://static.ledouya.com/Ft-SFeRe0EbP4J3uZPTioNx_iDy-) -->
 
 * 分发版本较多,选择自己感兴趣的即可,也可以同时安装多个分发,但是感觉没太大必要,若选择 ubuntu 建议安装 Ubuntu 18.04 LTS 版本,本教程就是基于此版本,出了问题,网上此版本下的解决方案很多.
 * 最后一步的 "为新的 Linux 分发版创建用户帐户和密码"的密码很重要,之后 bash 窗口使用管理员权限运行命令时都要校验密码,因此不要忘记喽.
@@ -97,17 +98,129 @@ ubuntu 18.04 安装 Redis 参考这篇文章就够了,很详细,按照步骤一�
 * 参考教程中启动/关闭/重启 redis 命令用的是 `sudo systemctl start redis`, `sudo systemctl stop redis`, `sudo systemctl restart redis`, 如果不生效, 则改用 `sudo service redis-server start`, `sudo service redis-server stop`, `sudo service redis-server restart` 命令.
 * 运行命令 `service --status-all` 来查看服务名称(启动/关闭/重启服务时候不确定服务名称的话可以查看).
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc8f79d337cb4aee9b64ae117d88abc4~tplv-k3u1fbpfcp-zoom-1.image)
+![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/2.png)
+<!--![](http://static.ledouya.com/FlfgBuioJCUTlioMgvoIixe92znm)  -->
 
 
 
 可参考资料:<br>
 	[How To Install and Secure Redis on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04)<br>
     [System has not been booted with systemd as init system (PID 1). Can't operate](https://stackoverflow.com/questions/52197246/system-has-not-been-booted-with-systemd-as-init-system-pid-1-cant-operate)
-## 5. vscode 安装插件 Remote - WSL
-* 该插件可以实现在 windows 系统上基于已安装的 WSL 环境运行 linux 程序的能力,终端输入 linux 命令,跟 ubuntu bash 窗口作用一样.感觉很方便,墙裂推荐安装使用.
-## 6. 安装项目依赖
-* client 客户端是前端 vue 项目,npm i 安装依赖 (如果下载慢,可以设置 npm 源来加速,或者安装 cnpm 加速),然后 npm run dev 运行项目,linux 环境下启动即可(因为 linux 环境下也装了 node.js ,所以可以运行前端项目)
-* server 服务端安装依赖的时候不出意外的话会在安装 `node-rdkafka` 和 `sqlite3` 的时候报错,下来我们针对报错来进行解决.
 
-### vscode 中导入项目(使用 Remote WSL 插件 )
+## 5. vscode 安装插件 Remote - WSL
+* 该插件可以实现在 windows 系统上基于已安装的 WSL 环境运行 linux 程序的能力,终端输入 linux 命令,跟 ubuntu bash 窗口作用一样.很方便,墙裂推荐安装使用.
+
+## 6. 克隆并配置项目,安装依赖,启动项目
+* client 客户端是前端 vue 项目,npm i 安装依赖 (如果下载慢,可以设置 npm 源来加速,或者安装 cnpm 加速),然后 npm run dev 运行项目,linux 环境下启动即可(因为 linux 环境下也装了 node.js ,所以可以运行前端项目)
+* server 服务端安装依赖的时候不出意外的话会在安装 `node-rdkafka` 和 `sqlite3` 的时候报错,下面是解决步骤.
+### 6.1 从 gitHub 上 clone 项目到本地
+```
+git clone git@github.com:LianjiaTech/fee.git
+```
+[仓库地址](https://github.com/LianjiaTech/fee)
+
+### 6.2 vscode 导入项目(使用 Remote WSL 插件 )
+* 点击 vscode 右下角图标(如图所示)
+![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/3.png)
+<!--![](http://static.ledouya.com/FsTSqqDi8ncH5H-6ZIYiFvFfVvT8)  -->
+
+* 弹出下拉框中选择 "Open Folder in WSL..." 去选择想导入的项目
+* 导入成功后标识如图
+![](https://github.com/HUYIJUNCODING/firefly/blob/main/doc/assets/4.png)
+<!--![](http://static.ledouya.com/FkI4wYBsyunr0ESZ0XcZCUFsPnO8)  -->
+
+### 6.3 配置MySQL
+* 在 `server/src/configs/mysql.js` 中修改主机地址/数据库端口/数据库用户名/数据库密码/数据库库名
+```
+const development = {
+  host: '127.0.0.1', // 主机地址
+  port: '3306', // 数据库端口
+  user: 'root', // 数据库用户名
+  password: '00000000', // 数据库密码
+  database: 'platform'  // 数据库库名
+}
+```
+### 6.4 配置redis
+* 在server/src/configs/redis.js中修改主机地址或redis端口
+```
+// 开发环境配置
+const development = {
+  host: '127.0.0.1', // 主机地址
+  port: '6379' // redis端口
+}
+```
+
+### 6.5 安装服务端依赖，在项目 server 目录下
+
+```
+npm install
+```
+
+
+### 6.6 编译 server，打开一个新的窗口在项目 server 目录下(vscode终端或者 ubuntu bash都可以,一定要 cd 到项目 server 目录下)
+```
+npm run watch
+```
+### 6.7 启动server服务，在项目 server 目录下(vscode终端或者 ubuntu bash都可以,一定要 cd 到项目 server 目录下)
+
+```
+npm run dev
+```
+### 6.8 创建数据库
+
+* 在项目 server 目录下执行下列指令，会在当前目录下生成 init.sql 文件
+
+```
+npm run fee Utils:GenerateSQL 1 '2020-01' '2020-07' > init.sql
+```
+* 创建 platform 数据库
+```
+<!-- CREATE DATABASE 数据库名; -->
+create database platform;
+
+<!-- 创建完成后可执行 SHOW DATABASES; 命令查看创建结果 -->
+```
+**注意** 如果没有启动服务,必须先启动 mysql服务,然后登录 mysql 服务,才可以开始创建数据库以及使用 sql 命令
+
+* 在项目 server 目录下执行下列指令,读取 init.sql 文件,为 platform 数据库建表
+```
+mysql -u root -h 127.0.0.1 platform -p < init.sql
+```
+**注意** 需要注释/删除掉 int.sql 文件开头两行,否则会执行报错(sql文件中,非sql语句不能执行)
+
+```
+<!-- 这两行非sql语句注释掉 -->
+> platform@1.0.0 fee /mnt/c/custom/youran/repositories/fee/server
+> NODE_ENV=development node dist/fee.js "Utils:GenerateSQL" "1" "2020-01" "2020-07"
+```
+
+### 6.9 初始化样例数据。在项目 server 目录下，执行下列指令
+```
+npm run fee Utils:TemplateSQL
+```
+执行成功后，样例数据会被写入数据库中。
+
+### 6.10 安装 Client 依赖，在项目 client 目录下
+```
+npm install
+```
+### 6.11 启动 Client 服务，在项目 client 目录下
+```
+nmp run dev
+```
+### 6.12 访问本地服务: 127.0.0.1:8080
+
+* a. 使用默认管理员账户登录
+   账号：test@qq.com
+   密码：admin
+
+* b. 或进行注册、登录，就能看到模板项目数据了。
+
+
+
+
+
+
+
+
+
