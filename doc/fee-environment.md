@@ -179,7 +179,7 @@ const development = {
 npm install
 ```
 
-#### 6.5.1 针对 node-rdkafka,sqlite3 依赖包报错解决方案
+#### 针对 node-rdkafka,sqlite3 依赖包报错解决方案
 
 * 在 ubuntu 上安装 GCC
 [如何在ubuntu 18.04上安装GCC编译器](https://www.myfreax.com/how-to-install-gcc-compiler-on-ubuntu-18-04/)<br>
@@ -209,6 +209,10 @@ npm install
 python --version (查看当前使用的 python 版本)
 update-alternatives --list python  (列出当前已安装且可用的所有 python 版本)
 ```
+可参考资料:<br>
+[Error installing node-gyp on ubuntu](https://stackoverflow.com/questions/21155922/error-installing-node-gyp-on-ubuntu)<br>
+[npm install 报错:node-pre-gyp ERR! 问题解决](https://www.cnblogs.com/haochuang/p/5688093.html)<br>
+[Ubuntu18.04下python版本完美切换的解决方法](https://www.geek-share.com/detail/2771497709.html)<br>
 
 ### 6.6 编译 server，打开一个新的窗口在项目 server 目录下(vscode终端或者 ubuntu bash都可以,一定要 cd 到项目 server 目录下)
 ```
@@ -269,10 +273,6 @@ nmp run dev
 
 * b. 或进行注册、登录，就能看到模板项目数据了。
 
-可参考资料:<br>
-[Error installing node-gyp on ubuntu](https://stackoverflow.com/questions/21155922/error-installing-node-gyp-on-ubuntu)<br>
-[npm install 报错:node-pre-gyp ERR! 问题解决](https://www.cnblogs.com/haochuang/p/5688093.html)<br>
-[Ubuntu18.04下python版本完美切换的解决方法](https://www.geek-share.com/detail/2771497709.html)<br>
 
 
 
