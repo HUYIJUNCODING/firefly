@@ -181,7 +181,7 @@ npm install
 
 #### 针对 node-rdkafka,sqlite3 依赖包报错解决方案
 
-* 在 ubuntu 上安装 GCC
+* 在 ubuntu 上安装 GCC<br>
 [如何在ubuntu 18.04上安装GCC编译器](https://www.myfreax.com/how-to-install-gcc-compiler-on-ubuntu-18-04/)<br>
 参考文档一步步安装 GCC编译器 即可.第一步安装 gcc 的原因是 node-rdkafka 的需要用到 node-gyp,而 node-gyp 的安装又依赖 gcc.
 
